@@ -2,13 +2,12 @@
 python_requirement(
     name="requirements",
     requirements=[
-        "pandas==1.2.4",
+        "pyspark==3.2.1", # align with DBR 10.4
+        "pandas==1.5.0",
+        "pyarrow==4.0.0",
     ],
 )
 
 # See https://www.pantsbuild.org/docs/reference-python_sources for more info
 python_sources(name = "sources", sources=["**/*.py"])
 
-pex_binary(name = "pex", 
-  entry_point="hello:main"
-)
