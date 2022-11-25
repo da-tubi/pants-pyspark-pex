@@ -12,5 +12,10 @@ pip install pyspark==3.2.1
 
 And then:
 ```
-dist/app.pex
+dist/app.pex -m app
 ```
+
+## Refenrences
++ https://spark.apache.org/docs/3.3.1/api/python/user_guide/python_packaging.html#using-pex
++ https://www.pantsbuild.org/docs/reference-pex_binary
+
