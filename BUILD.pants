@@ -1,26 +1,18 @@
-# See https://www.pantsbuild.org/docs/python-third-party-dependencies for more info
-python_requirement(
-    name="pyspark",
-    requirements=[
-        "pyspark==3.2.1", # align with DBR 10.4
-    ],
-)
-
-python_requirement(
-    name="others",
-    requirements=[
-        "pandas==1.5.0",
-        "pyarrow==4.0.0",
-    ],
+python_requirements(
+    name="requirements"
 )
 
 # See https://www.pantsbuild.org/docs/reference-python_sources for more info
 python_sources(
     name = "sources",
-    sources=["**/*.py"],
+    sources=["app.py"],
 )
 
-pex_binary(name = "pex",
-    entry_point="hello:main",
-    dependencies=["!!//:pyspark"]
+pex_binary(name = "app",
+    inherit_path="fallback",
+    dependencies=[
+        "//:sources",
+        "!!//:requirements#pyspark",
+        "//:requirements#pyarrow",
+    ],
 )
